@@ -1,0 +1,35 @@
+﻿//fixed error when setting an array of Ints, qbkeys etc with 0 items after being constructed with >1
+
+//pad replaced QB in pak to nearest 32 bytes (Wii PC / XBox) 16 PS2
+
+Fixed bad export path
+Fixed error message when searching paks that contained non qb files
+
+
+AUTODETECT HasStructItems
+
+//TODO
+- Search QB keys by text with no debug file (full text search only when no debug file present)
+- Fix anoying filename population when changing game format, now just blanks the boxes
+- Load / Save arrays to text file
+- Add GHWT types
+- if pak text box has trailing  \ it crashed on ...
+- if pak is in root then double \\ is on debug file
+- number search
+- copy / clone tree
+- qbkey in tree
+- value in tree
+- add file interface
+- remove file interface
+- read all file types from debug file pak
+- fix PakHeaderItem (more items should be QbKeys)
+- Use File Read and not Open
+
+- Added Rename file to parser
+- Added Number search
+- Bug Fix on open and save script
+- Added FileAccess to FileStreamOpen commands
+- Added Clone on structure types
+- Added Add Sibling to Unknown type right-click
+- Removed the ability to remove the "Unknown" type
+

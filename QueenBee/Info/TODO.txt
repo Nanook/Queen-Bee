@@ -1,0 +1,169 @@
+﻿ - Added support for new compression on xbox 360
+ - Fixed Xbox360 dbg file not loading as the PAK
+ - Changed code structure so that compression code is in the DLL
+ - Fixed error when debug QbKey started with a space
+ - Changed PAK file New/Add so that auto detects pak items to include in PAK header
+ - Changed PAK file New/Add to that is detects the Unknown value from another QB (it changed in GH5)
+ - Fixed test for allowed data types on Array Items
+ 
+ 
+ - Added support for GH:WT, GH:M and GH:SH/GH (Not all platforms have been tested)
+ - Added Copy and Paste to the Qb Item tree structures. You can also copy and paste over different files.
+ - Added Qb Item value to the Qb Item list.
+ - Added Number search
+ - Added the ability to create new files in the PAK
+ - Added the ability to add new files to the PAK
+ - Added the ability to rename files in the PAK
+ - Added the ability to remove files from files to the PAK
+ - Added ability to import and export array types to text files, for power editing.
+ - Changed Qb Item list so it now shows the QbKey when no debug name is found
+ - Changed app structure by splitting the core out to a dll (Queen Bee Parser). As used by TheGHOST and RawkSD.
+ - Changed the name of StringPointer to QbKeyString
+ - Changed the name of StringPointerB to StringPointer
+ - Added New QbKeyStringQs types - these point to the qs.pak of strings.  Editing is not supported in Queen Bee, export the related text file, edit and import
+ - Changed QbKey search so that entered text can be matched against QbKeys even when no debug file is loaded (full text match only).
+ - Fixed errors when paths are not found when loading / saving scripts etc.
+ - Fixed double \ in debug path when loading pak files from the root of a drive
+ - Changed the file access to readonly files can be opened without errors.
+
+----
+
+
+On failed save, delete temp file 
+Backup folder not just .bak file
+
+Add >> << for endian swapping in binary reader / writer
+
+Load QB files without pak
+
+
+Log messages on pointer fix
+  
+pad files to nearest 16 bytes?
+  
+ - Calculate FileID when file is loaded
+ - Autodetect if PAB is required
+ - Load WPC PAK Bug Fix
+ - load filename from PAK if present (if not get from debug file)
+ - Exception handling on Compression
+ - When loading pak the first item is selected automatically
+ - Set tab orders on Array and script editors
+ - Exception handling on editors
+ - Repeated messageboxes on search
+ - Backwards QB item for wpc QB search
+ - Import text file into script (FIX Parser to include last char)
+ - Ensure Qb Items with a value of FFFFFFFF are not included in menu list
+ - Struct Item string Pointer defaults to int (SHould be hex, the error message is?)
+ - Test items with exceptions in CreateQbItemType (QBFile)
+ - When removing Structure items, try and set listview top item
+ - Add new Typesto QB structure
+ - Enter bad Unknown CRC and click update, it lets you BAD
+ - Check that a QB simple array with no values shows correct data type etc
+ - Change item count message in btnSavePak_Click so that it doesn't show child count for items that can only ever have 1 value int, floats, sections etc
+ - Test that Array editor works and items are correctly set when no items are present
+ - Test IsValid when testing QB Files.
+ - Check adding StructItem Header Stuff, it's included withing one of the types
+ - Enter on Array edit clicks Set button
+ - Does the QB CHanged warning popup too much, need to reset on new QB file load
+ - Not saving Data Type correctly when String / Hex
+ - Add new generic Item without one to clone!!!
+ - Remove is selecting last item
+ - When adding Float, identify if needs to be 2 or 3 floats
+ - Last child StructArrayItem remove
+ - Search no items, press enter
+ - Script compression
+ - Script enter blank script
+ - not persisting last script debug name (QBKey used NOT debugName)
+ - When removing last item, edit panel keeps item displayed
+ - Ensure File ID is set correctly on new QB items
+ - Add AllowableChars when identifying script strings
+ - Document QBKey editing and userdbg file saving (Dupe CRC diff text message)
+ - Doc Script editing
+ - Update help tab pages
+ - Add XBox saving.
+ - Context menu on Search Results
+ -   Filter Out File
+ -   Filter File Only
+ -   Edit Item
+ - Static Options class
+ - Update New QB Text in list
+ - XBox Support  
+ - Check debug file for QBKey crc when custom is entered to ensure there is no conflict
+ - Store new QBkey strings in file.
+ - Message in Script strings to read help
+ - Change Vector to FloatX2 X3
+ - Script Editor
+   - Connect up updated events on editors
+   - label width on Script edit
+   - Show ASCII in hex
+   - recalculate sizes on script save
+   - Validation on script save
+ - Property to set tab on script editor
+ - Remember Tab on script editor
+ - Stop flickering on control update
+ - Search scripts
+ - Unicode on Script Strings, test unicode is valid.
+ - Cater for strings at the end of HEX
+ - Update strings in script object
+ - SHOW PAB IN STATUS BAR
+ - Hour glass for search
+ - QbKey to accept crc and string, test crc for string
+ - Events for show Exception and SHow Error in QbItemEditorBase
+ - Change UINT to INT
+ - Show QB Item at top of generic edit list
+ - Search QBKey CRC and Text
+ - Enable QBKey editing (not 0000 values)
+ - Display QBKey text for arrays etc
+ - Detecting pab when none selected
+ - Detect reading outside of PAB file and raise exception
+ - Show PAB file in status bar
+ - Don't detect debug file when it's the same as the PAK
+ - Test replacing all string in PC / PS2 / wii
+ - Update the message on the front form
+ - Detect PAB
+ - PAKEditor to indicate if content is present
+ - Use filetypes in pak types
+ - PS2 Support
+ - PC Support
+ - Tab Orders
+ - Replace Enum for Struct?
+ - Backup not working on PAK?
+ - Change interface to PAK / PAB / DBG
+ - Fix exceptions (show retrieved value not enum.
+ - Save PAK
+ - Get Struct from enum QbItem
+ - Load PAB File
+ - Save Type CBO value
+ - Search
+ - Update Documentation "Edit QB >>" gone
+ - Warn when leaving QB tab is Save button is enabled
+ - Remove "Edit QB >>" button
+ - Update label on front screen to say Double click item
+ - Warning if more than xx edit items
+ - Display "No Results Found" on search
+ - Save settings (column positions, widths, splitter, sort orders)
+ - Get endian from Qb File
+ - Context menu on PAK
+ -   Extract File
+ -   Replace File
+ -   Extract All
+ -   Test All
+ - Document Context Menu
+ - Document Backup (does it on load)
+ - Get Nanook from assembly.info
+ - Tab orders
+ - Refresh Edit Item after update
+ - Only enable "Update" if editable item exists.
+ - Don't write back readOnly var
+ - Refresh the PAK file on headers
+ - About screen
+ - Exception handling
+ - Rename ItemId to ItemQbKey (expose as readonly, check is QbKey) ??
+ - Status bar
+ - Add all types to QbArray, QbStruct, QbSection etc
+ - NEW ICONS
+ - change pakFilename variable names in PakEditor
+ - Test replacing first and lst file in pak
+ - Test GHA and THPG
+ - Test all button
+ - Sort Length by numeric

@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{EEFF0E58-CD15-4D7B-945C-2C2F0584D43B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Nanook.QueenBee.Parser</RootNamespace>
+    <AssemblyName>QueenBeeParser</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BinaryEndianReader.cs" />
+    <Compile Include="BinaryEndianWriter.cs" />
+    <Compile Include="Pak\PakDbgQbKey.cs" />
+    <Compile Include="Pak\PakEditor.cs" />
+    <Compile Include="Pak\PakItemType.cs" />
+    <Compile Include="Pak\PakFormat.cs" />
+    <Compile Include="Pak\PakFormatType.cs" />
+    <Compile Include="Pak\PakHeaderFlags.cs" />
+    <Compile Include="Pak\PakHeaderItem.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Qb\base\EditableAttribute.cs" />
+    <Compile Include="Qb\base\GenericQbItem.cs" />
+    <Compile Include="Qb\base\QbItemBase.cs" />
+    <Compile Include="Qb\base\QbItemType.cs" />
+    <Compile Include="Qb\Lzss.cs" />
+    <Compile Include="Qb\QbFile.cs" />
+    <Compile Include="Qb\QbItemArray.cs" />
+    <Compile Include="Qb\QbItemFloat.cs" />
+    <Compile Include="Qb\QbItemFloats.cs" />
+    <Compile Include="Qb\QbItemFloatsArray.cs" />
+    <Compile Include="Qb\QbItemInteger.cs" />
+    <Compile Include="Qb\QbItemQbKey.cs" />
+    <Compile Include="Qb\QbItemScript.cs" />
+    <Compile Include="Qb\QbItemString.cs" />
+    <Compile Include="Qb\QbItemStruct.cs" />
+    <Compile Include="Qb\QbItemStructArray.cs" />
+    <Compile Include="Qb\QbItemUnknown.cs" />
+    <Compile Include="Qb\QbKey.cs" />
+    <Compile Include="Qb\ScriptString.cs" />
+    <Compile Include="Zlib\Adler32.cs" />
+    <Compile Include="Zlib\Deflate.cs" />
+    <Compile Include="Zlib\InfBlocks.cs" />
+    <Compile Include="Zlib\InfCodes.cs" />
+    <Compile Include="Zlib\Inflate.cs" />
+    <Compile Include="Zlib\InfTree.cs" />
+    <Compile Include="Zlib\JZlib.cs" />
+    <Compile Include="Zlib\StaticTree.cs" />
+    <Compile Include="Zlib\SupportClass.cs" />
+    <Compile Include="Zlib\Tree.cs" />
+    <Compile Include="Zlib\ZlibStream.cs" />
+    <Compile Include="Zlib\ZStream.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="INFO.txt" />
+    <Content Include="Zlib\license.txt" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

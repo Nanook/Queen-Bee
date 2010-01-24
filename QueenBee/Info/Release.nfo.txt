@@ -1,0 +1,77 @@
+﻿- - - - - -__- - -.- - - -.- - -.- - -.- - \|/.- - -.- - -.-__- -.- - - -
+ .  .  ___/ |__ .    __ .   .  .  .     . --O--.  __  . ___/ | _____ .  .
+       \__ +   \ ___/ |__      __    .  __ /|\___/ |__  \__  |/ +  /   .
+  .   . /   | + \\__     \ ___/ |__.___/ |__  \__     \ ./   |    / .
+    .  /+   |    \/  _|   \\__     \\__     \  /   |   \/ +   +  /_   .
+.     /     |+    \  \_    \/   |   \/   |   \/    |    \    |     \ .  .
+   . /    + |   +  \_ |     \_  |    \_  |    \_   |     \_+ |  +   \ .
+.  _/  +    |_______/ |______/  |_____/  ______/   _______/  |       \_ .
+  .\      + |==\______|===\_____|==\_____|==\______|==\______|+    +  /
+- - \_______| - - - - - - -  Proudly Presents  - - - - - - - |_______/ - -
+
+                  Queen Bee (PAK / QB Explorer, Editor)
+
+
+This explorer / editor allows you to modify QB files contained in PAK/PAB
+files.
+
+Queen Bee is a PAK / QB Explorer, Editor.
+
+Please read the information on these tabs.  Coders hate documenting so if they
+take the time to write something the least you can do is read it  ;-)
+
+This application will help everyone discover lots of great hacks.  See the text
+file included with this release for some areas of interest (after only half an
+hour of casually browsing).
+
+Due to this application being so generic it can be tedious to use if you have a
+lot of changes to make. The internal core is designed to be used to build
+specific item editors very easily (like the already existing Song List editor). 
+Although the source code is not included I do plan to release it, just not yet. 
+I want to ensure the core is correct and stable so that if people use it they
+won't need to restructure code because of QB core keeps changes.
+
+
+Quick Feature List:-
+-	Supports Wii / PS2 / PC / XBox files.
+-	Edits a PAK's QB file in memory (No Import / Export required).
+-	Import / Export / Export All functionality for PAK files.
+-	Supports all internal QB structures contained in Guitar Hero 3 / Aerosmith /
+    Tony Hawk's Proving Ground and Downhill Jam (qb.pak.ngc).
+-	All items are editable including increasing the size of text and script
+    items.
+-	Debug files are supported to help describe the QB file structures.
+-	QB files are Bit perfect if loaded and saved without changes even though the
+    file has been broken down and fully rebuilt.
+-	Saves and Restores settings.
+-	Search Facility (String & QB Key).
+
+
+Todo:-
+-	Fix any bugs and release version 1.0.
+
+
+Wish List:-
+-	Add support for structure editing (item creation / deletion).
+-	Load QB files without PAK/PAB.
+
+
+Technical Notes:-
+-	Internal QB pointers are not used when loading files, instead they are used
+    to validate the file is not corrupt.
+-	This application was developed to allow other developers to use the code in
+    their code.
+-	The code will be released when I'm happy this app functions correctly and all
+    the data types are correct.
+
+
+Respect to ALL who contribute to the following:-
+-	Console Reversing.
+-	Homebrew.
+-	Scene News.
+-	Custom Guitar Hero Discs (Any Console).
+Your efforts and time are appreciated.
+
+
+Thanks to GameZelda for releasing code for the apps he writes and always being
+an endless source of technical information.

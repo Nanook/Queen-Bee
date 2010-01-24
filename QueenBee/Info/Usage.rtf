@@ -1,0 +1,161 @@
+{\rtf1\ansi\ansicpg1252\deff0\deflang1033\deflangfe1033{\fonttbl{\f0\fswiss\fprq2\fcharset0 Tahoma;}{\f1\froman\fprq2\fcharset2 Symbol;}{\f2\fswiss\fprq2\fcharset0 Verdana;}}
+{\colortbl ;\red255\green0\blue0;\red0\green0\blue255;\red0\green128\blue0;\red255\green255\blue0;\red75\green0\blue130;\red0\green0\blue139;}
+{\*\generator Msftedit 5.41.15.1515;}\viewkind4\uc1\pard\lang2057\f0\fs16 Using this app makes a lot more sense once you know how it works.\par
+\par
+\par
+\b\fs24 Overview\b0\par
+\fs16 This is a PAK + QB editor / explorer. It allows you to view and modify the data structures in games by Vicarious Visions for the Wii, PS2, PC and Xbox, although it has not been tested with every game.  The data structures include things like text and values for the menu system and in-game settings.\par
+\par
+The PAK/PAB is a container for a collection of files.  These files can be audio, video, images, data structures (QB files) etc.  This application can load any PAK/PAB and extract and replace files.  If the contained files are QB files they can be opened for editing.\par
+\par
+To use this application you will need the PAK, PAB (not for Wii) and optionally a DBG file which are located within the file structure of the game being explored.  The DBG file contains text description of many items in the QB file which makes it invaluable when exploring the data structures.\par
+\par
+\par
+\b\fs24 The QB Key\par
+\b0\fs16\par
+The QB Key is an important part of QB editing. It is essentially a key that identifies the QB Items in the QB File.  The QB Key links to the text in the DBG file, it can actually be generated from this text.  It is important to remember that its real value is the hex value and not the text.\par
+\par
+The QB Key can be found playing two roles in a QB File.  Firstly as the 'Item QB Key' that identifies a QB Item and secondly as a 'QB Key' which is a pointer to an 'Item QB Key'.\par
+\par
+When editing QB Keys you can type in a made up text value if you need to, the hex crc will be created for you and stored in the item.  If the hex crc already exists in the DBG file with a different text string a warning will be displayed, a new string should be entered.\par
+\par
+Because the text is loaded from the DBG file and the new value will not be saved there; Queen Bee will save it to a file named the as the PAK with a '.UserDbg' extension.\par
+\par
+\par
+\b\fs24 The Interface\par
+\b0\fs16 The application has 3 tabs which are described below.\par
+\par
+\par
+\b\i\fs20 1. PAK Tab\par
+\b0\i0\fs16\par
+\b Loading PAK/PAB Files\par
+\b0 Use this tab to select the \ldblquote Format\rdblquote  of the files to be loaded. Clicking the \ldblquote Load\rdblquote  button will display the contents of the PAK in the list on the right hand side.  The \ldblquote Backup\rdblquote  checkbox will make a copy of the PAK/PAB on load, this allows multiple saves to be made to the file without losing the original backup.  When a backup copy is made an existing backup will be overwritten, so always make sure you have a another backup elsewhere.\par
+\par
+\b PAK/PAB Contents\par
+\b0 The contents of the PAK are displayed in the list on the left.\par
+\par
+Double clicking an item performs the same action as \ldblquote Edit QB File\rdblquote .\par
+\par
+Right-clicking on an item will display a menu with the following items it:-\par
+\par
+\pard\fi-360\li720\tx720\lang1024\f1\'b7\tab\lang2057\f0 Replace File\'85\tab - Replace the selected file in the PAK/PAB with a file from disk.\par
+\pard\fi-360\li720\lang1024\f1\'b7\tab\lang2057\f0 Extract File...\tab - Extract the selected file from the PAK/PAB and save it to disk.\par
+\lang1024\f1\'b7\tab\lang2057\f0 Extract All...\tab - Extract all files from a PAK/PAB to a specified folder.\par
+\lang1024\f1\'b7\tab\lang2057\f0 New File...\tab - Create a new file with no types in it. (only the Unknown type).\par
+\lang1024\f1\'b7\tab\lang2057\f0 Add File...\tab - Adds a file from the disk as a new PAK item.\par
+\lang1024\f1\'b7\tab\lang2057\f0 Rename File...\tab - Rename an entry and modify all the internal QB file IDs.\par
+\lang1024\f1\'b7\tab\lang2057\f0 Remove File\tab - Removes a file from the PAK.\par
+\lang1024\f1\'b7\tab\lang2057\f0 Edit QB File\tab - Edit the QB file using the QB tab.\par
+\lang1024\f1\'b7\tab\lang2057\f0 Test All QB Files\tab - Test that the PAK/PAB and all QB files are valid, this tests pointers etc.\par
+\pard\par
+Columns can be sorted by clicking the column header.  Columns can also be reordered by dragging them in to the desired position.\par
+\par
+\b Viewing Queen Bee Info\b0\par
+Clicking the \ldblquote Info\'85\rdblquote  button opens this window.\par
+\par
+\par
+\b\i\fs20 2. QB Item Search Tab\par
+\b0\i0\fs16\par
+This tab contains two case insensitive search boxes:\par
+\par
+\b String Search\b0\par
+Enter a string to search for in the text box. This search searches all string data types as well as string that have been found in scripts.  See the Script Editor help section for more information on script strings.\par
+\par
+\b QB Item Search\b0\par
+This search searches for QB Keys. It searches both Item QB Keys as well as QB Key pointers.  The QB Key can be entered as a partial text that will search the debug names or as an hex value that will search the CRCs.\par
+\par
+\b Number Search\b0\par
+This search searches for for a numeric value.  Integer and float types are searched.  If the input text contains a decimal point then only floats are searched.\par
+\par
+\b Search Results\par
+\b0 Double clicking a search result will open the selected item for editing in the \ldblquote QB File\rdblquote  tab.\par
+\par
+Right-clicking an item will display a menu with the following filter items on it:-\par
+\par
+\pard\fi-360\li720\tx720\lang1024\f1\'b7\tab\lang2057\b\i\f0 Filter On\b0\i0\tab\tab - Section title item.\par
+\pard\fi-360\li720\lang1024\f1\'b7\tab\lang2057\f0 Item\tab\tab - Removes all results not matching the selected item\par
+\lang1024\f1\'b7\tab\lang2057\f0 Qb File Name\tab - Removes all results not from the selected file.\par
+\lang1024\f1\'b7\tab\lang2057\f0 Type\tab\tab - Removes all results not matching the selected type.\par
+\lang1024\f1\'b7\tab\lang2057\b\i\f0 Filter Out\b0\i0\tab - Section title item.\par
+\lang1024\f1\'b7\tab\lang2057\f0 Item\tab\tab - Removes all results matching the selected item\par
+\lang1024\f1\'b7\tab\lang2057\f0 Qb File Name\tab - Removes all results from the selected file.\par
+\lang1024\f1\'b7\tab\lang2057\f0 Type\tab\tab - Removes all results matching the selected type.\par
+\pard\par
+Columns can be sorted by clicking the column header.  Columns can also be reordered by dragging them in to the desired position.\par
+\par
+\par
+\b\i\fs20 3. QB File Tab\par
+\b0\i0\fs16\par
+This tab displays the contents of a QB File. The left side displays the structure of the QB Items, the right side displays the data for a selected QB Item.\par
+\par
+Right-clicking in to the structure brings up a menu:\par
+\pard\fi-360\li720\lang1024\f1\'b7\tab\lang2057\f0 Add Child >\tab - Add a child item to the end of the selected item's children.\par
+\lang1024\f1\'b7\tab\lang2057\f0 Insert Sibling >\tab - Insert a new item before the selected item at the same level.\par
+\lang1024\f1\'b7\tab\lang2057\f0 Add Sibling >\tab - Adds a new item after the selected item at the same level.\par
+\lang1024\f1\'b7\tab\lang2057\f0 Remove\tab\tab - Removes the selected item and all its children.\par
+\lang1024\f1\'b7\tab\lang2057\f0 Copy\tab\tab - Copies an item and all children ready for pasting.\par
+\lang1024\f1\'b7\tab\lang2057\f0 Paste\tab\tab - Allows a copied item to be pasted as Add Child, Insert Sibling ot Add Sibling (see the rules above).\par
+\pard Items created with this menu are saved to the memory instantly. \par
+\par
+When saving to disk, the structure will be checked to ensure certain rules are not violated.\par
+\par
+\par
+\b Saving Updates\par
+\b0 After editing an item, the \ldblquote Update\rdblquote  button should be clicked.  This saves the changes to memory so other items can be edited without losing any changes.  The \ldblquote Save to Disk\rdblquote  button will become enable to indicate there are changes to be saved.  Clicking this button will save the QB File back to the PAK/PAB file.\par
+\par
+If the files are in \ldblquote Xbox\rdblquote  format a warning will be displayed if the files are PAK or PAB are larger than the originals.\par
+\par
+\b General String Editing\par
+\b0 String can contain place holders for items such as colour changes:\par
+\f2\fs14\par
+\\c0 : \b default\b0  \line\\c1 : \b white\b0  \line\\c2 :\cf1  \b red\cf0\b0  \line\\c3 :\cf2  \b blue\cf0\b0  \line\\c4 :\cf3  \b green\cf0\b0  \line\\c5 :\cf4  \b yellow\cf0\b0  \line\\c6 :\cf2  \b blue\cf0\b0  \line\\c7 : \cf5\b purple\cf0\b0  \line\\c8 :\cf6  \b dark blue\cf0\b0  \line\\c9 : \b silver\b0\f0\fs16\par
+\par
+\\n : Line break.\par
+\par
+\par
+\b\i\fs18 QB Item Editors\par
+\b0\i0\fs16\par
+\b Generic Item Editor\b0\par
+This editor lists items in a simple list, each item can display its data in different formats by clicking the data type button to right of it. \par
+\par
+\b Array Editor\b0\par
+Used to display the items contained in simple arrays.  The data type can be changed for all items by using the data type button at the top of the list.\par
+\par
+To edit an item:-\par
+\pard\fi-360\li768 1.\tab Select it.\par
+2.\tab Edit it\rquote s value in the text box.\par
+3.\tab Press Return/Enter or click the \ldblquote Set\rdblquote  button to update it in the list.\par
+\pard\par
+Once finished use the update button to commit the values to the QB Item.\par
+\par
+Right-clicking on the item brings up an menu:\par
+\pard\fi-360\li720\lang1024\f1\'b7\tab\lang2057\f0 Insert Item\tab - Inserts a new item before the selected item.\par
+\lang1024\f1\'b7\tab\lang2057\f0 Add Item\tab\tab - Adds a new item after the selected item\par
+\lang1024\f1\'b7\tab\lang2057\f0 Remove Item\tab - Removes the selected item.\par
+\lang1024\f1\'b7\tab\lang2057\f0 Move Up\tab\tab - Moves the selected item up.\par
+\lang1024\f1\'b7\tab\lang2057\f0 Move Down\tab - Moves the selected item down.\par
+\par
+\pard Use the \ldblquote Import\rdblquote  and \ldblquote Export\rdblquote  buttons to load and save arrays as text files. This allows the use of a more powerful editor.\par
+\par
+When editing items with the menu, the \ldblquote Update\rdblquote  button must be used to save the items.\par
+\par
+\par
+\b Script Editor\b0\par
+This editor allows scripts to be viewed / edited.  There are 2 tabs in this editor:\par
+\par
+\pard\fi-360\li720\tx720 1.\tab\b Strings\b0  \endash  Lists any string that have been identified from the hex (see tab 2)\line\cf1\b Warning:\cf0\b0  When editing these strings ensure that only text you see in the game is changed. Sometimes when these strings are identified, characters are included because they are readable, but are actually part of the binary script. Editing them or changing their position may cause the script to be corrupt and therefore break the game.  The strings are fixed width and the editor will not let you make them longer than the original. If you shorten them they will be padded with spaces.  \b\i Use this feature with care.\b0\i0\par
+\pard\par
+\pard\fi-360\li720\tx720 2.\tab\b Uncompressed Script\b0  \endash  This tab shows a simple hex dump of the script, the strings from the first tab can be found in this data.  If you wish to edit it you can use the \ldblquote Export\'85\rdblquote  and \ldblquote Import\'85\rdblquote  buttons at the bottom of this control.\b\par
+\pard\b0\par
+\par
+\par
+\b\fs24 Queen Bee Files\par
+\b0\fs16\par
+Queen Bee creates various files in the same folder as the source files (PAK/PAB/DBG):-\par
+\par
+\pard\fi-360\li720\lang1024\f1\'b7\tab\lang2057\f0 .bak\tab\tab - Created for any files that are backed up on load (PAK/PAB).\par
+\lang1024\f1\'b7\tab\lang2057\f0 .decompressed\tab - Created and loaded for editing in XBox format (PAK/PAB/DBG).\par
+\lang1024\f1\'b7\tab\lang2057\f0 .UserDbg\tab\tab - Created when custom QB Keys are created using text values.\par
+\pard\par
+}
+ 

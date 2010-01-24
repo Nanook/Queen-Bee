@@ -1,0 +1,10 @@
+
+cripts\guitar\guitar_hud.qb.ngc
+cripts\guitar\songlist.qb.ngc
+cripts\guitar\guitar_progression.qb.ngc (QBKey matches Song QBkey in Songlist)
+cripts\guitar\guitar_demo.qb.ngc
+cripts\guitar\guitar_difficulty.qb.ngc
+cripts\guitar\store_data.qb.ngc
+cripts\guitar\menu_credits.qb.ngc
+cripts\guitar\menu\menu_cheats.qb.ngc (change integer to Hex)
+
