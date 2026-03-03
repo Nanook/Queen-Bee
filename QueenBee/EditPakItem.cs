@@ -71,18 +71,21 @@ Note: GH3 Wii misses the first character from the path, you can include it to en
       The FileId doesn't appear to affect the game, it may just need to be unique.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public bool IncludeFileNameInHeader
         {
             get { return chkFilename.Checked; }
             set { chkFilename.Checked = value; }
         }
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public string PakItemFilename
         {
             get { return txtItemPath.Text.Trim(); }
             set { txtItemPath.Text = value; }
         }
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public QbKey ItemType
         {
             get
@@ -109,6 +112,7 @@ Note: GH3 Wii misses the first character from the path, you can include it to en
             }
         }
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public string ImportFilename
         {
             get { return txtImport.Text.Trim(); }

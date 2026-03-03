@@ -12,6 +12,7 @@ using System.Configuration;
 using System.Text.RegularExpressions;
 using System.Runtime.InteropServices;
 using Nanook.QueenBee.Parser;
+using System.Diagnostics;
 
 namespace Nanook.QueenBee
 {
@@ -19,7 +20,7 @@ namespace Nanook.QueenBee
     {
         [DllImport("user32", CharSet = CharSet.Auto)]
         private extern static IntPtr SendMessage(IntPtr hWnd, int msg, int wParam, IntPtr lParam);
-        private const int WM_SETREDRAW = 0x000B;   
+        private const int _WM_SETREDRAW = 0x000B;
 
         private delegate void testSearchItem(QbFile qbFile, QbItemBase item);
 
@@ -44,7 +45,7 @@ namespace Nanook.QueenBee
                 cboFormatType.Items.Add(s);
 
             _info = null;
-            this.FormClosing += new FormClosingEventHandler(EditorForm_FormClosing);
+            this.FormClosing += new FormClosingEventHandler(editorForm_FormClosing);
 
             _lvwPakColumnSorter = new ListViewColumnSorter();
             this.lstPakContents.ListViewItemSorter = _lvwPakColumnSorter;
@@ -58,23 +59,27 @@ namespace Nanook.QueenBee
 
             tabs.SelectedTab = tabPak;
 
-            Assembly ass = Assembly.GetExecutingAssembly();
-            object[] attributes = ass.GetCustomAttributes(true);
-            string assName = string.Empty;
-            string assDescription = string.Empty;
-            string assCompany = string.Empty;
-            Version assVersion = ass.GetName().Version;
+            // Prefer the entry assembly for user-visible attributes, fall back to executing/calling assembly.
+            Assembly ass = Assembly.GetEntryAssembly() ?? Assembly.GetExecutingAssembly() ?? Assembly.GetCallingAssembly();
+            if (ass == null)
+                ass = Assembly.GetExecutingAssembly();
 
-            foreach (object attribute in attributes)
-            {
-                if (attribute is AssemblyDescriptionAttribute)
-                    assDescription = (((AssemblyDescriptionAttribute)attribute).Description);
-                else if (attribute is AssemblyTitleAttribute)
-                    assName = (((AssemblyTitleAttribute)attribute).Title);
-                else if (attribute is AssemblyCompanyAttribute)
-                    assCompany = (((AssemblyCompanyAttribute)attribute).Company);
-            }
-            this.Text = string.Format("{0} ({1})     v{2}.{3}     by {4}", assName, assDescription, assVersion.Major.ToString(), assVersion.Minor.ToString(), assCompany);
+            // Use typed attribute access and safe defaults.
+            var titleAttr = ass.GetCustomAttribute<AssemblyTitleAttribute>();
+            var descAttr = ass.GetCustomAttribute<AssemblyDescriptionAttribute>();
+            var companyAttr = ass.GetCustomAttribute<AssemblyCompanyAttribute>();
+
+            string assName = titleAttr?.Title ?? Path.GetFileNameWithoutExtension(ass.Location) ?? string.Empty;
+            string assDescription = descAttr?.Description ?? string.Empty;
+            string assCompany = companyAttr?.Company ?? string.Empty;
+            Version assVersion = ass.GetName().Version ?? new Version(0, 0, 0, 0);
+
+            this.Text = string.Format("{0} ({1})     v{2}.{3}     by {4}",
+                assName,
+                assDescription,
+                assVersion.Major,
+                assVersion.Minor,
+                assCompany);
 
             cboFormatType.SelectedIndex = 0;
 
@@ -1249,7 +1254,7 @@ This PAK has no StructItem children so this setting could not be detected.", "St
             QbItemEditorBase editor;
             try
             {
-                SendMessage(gboEdit.Handle, WM_SETREDRAW, 0, IntPtr.Zero);
+                SendMessage(gboEdit.Handle, _WM_SETREDRAW, 0, IntPtr.Zero);
                 clearEditor();
 
 
@@ -1281,7 +1286,7 @@ This PAK has no StructItem children so this setting could not be detected.", "St
             }
             finally
             {
-                SendMessage(gboEdit.Handle, WM_SETREDRAW, 1, IntPtr.Zero);
+                SendMessage(gboEdit.Handle, _WM_SETREDRAW, 1, IntPtr.Zero);
                 gboEdit.Refresh();
             }
 
@@ -2186,25 +2191,25 @@ This PAK has no StructItem children so this setting could not be detected.", "St
             if (_info == null)
             {
                 _info = new InfoForm();
-                _info.FormClosed += new FormClosedEventHandler(_info_FormClosed);
+                _info.FormClosed += new FormClosedEventHandler(info_FormClosed);
             }
             _info.Show();
             _info.BringToFront();
 
         }
 
-        private void _info_FormClosed(object sender, FormClosedEventArgs e)
+        private void info_FormClosed(object sender, FormClosedEventArgs e)
         {
             _info = null;
         }
 
-        private void EditorForm_FormClosing(object sender, FormClosingEventArgs e)
+        private void editorForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             saveConfiguration();
 
             if (_info != null)
             {
-                _info.FormClosed -= new FormClosedEventHandler(_info_FormClosed);
+                _info.FormClosed -= new FormClosedEventHandler(info_FormClosed!);
                 _info.Close();
                 _info = null;
             }
@@ -2221,7 +2226,7 @@ This PAK has no StructItem children so this setting could not be detected.", "St
             }
         }
 
-        private void EditorForm_Resize_Move(object sender, EventArgs e)
+        private void editorForm_Resize_Move(object sender, EventArgs e)
         {
             if (this.WindowState == FormWindowState.Normal)
                 AppState.SaveWindowInfo(this);
@@ -2249,7 +2254,7 @@ This PAK has no StructItem children so this setting could not be detected.", "St
         {
             try
             {
-                System.Diagnostics.Process.Start((string)((ToolStripStatusLabel)sender).Tag);
+                Process.Start(new ProcessStartInfo((string)((ToolStripStatusLabel)sender).Tag) { UseShellExecute = true });
             }
             catch (Exception ex)
             {

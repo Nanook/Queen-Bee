@@ -1,0 +1,4 @@
+﻿[*.cs]
+
+# CA2022: Avoid inexact read with 'Stream.Read'
+dotnet_diagnostic.CA2022.severity = none

@@ -95,6 +95,7 @@ namespace Nanook.QueenBee
             get { return _gItem; }
         }
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public int TextBoxLeft
         {
             get { return txtValue.Left; }

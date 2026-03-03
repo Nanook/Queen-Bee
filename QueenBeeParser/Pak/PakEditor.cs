@@ -808,6 +808,7 @@ namespace Nanook.QueenBee.Parser
         }
 
 
+#pragma warning disable CA2022 // Avoid inexact read with 'Stream.Read'
         private void fixUncompressedFileLengths(string newPakFilename, string newPabFilename)
         {
 
@@ -986,4 +987,6 @@ namespace Nanook.QueenBee.Parser
         private long _pakFileLength;
         private PakFormat _pakFormat;
     }
+#pragma warning restore CA2022 // Avoid inexact read with 'Stream.Read'
+
 }

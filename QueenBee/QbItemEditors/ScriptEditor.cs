@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Windows.Forms;
 using Nanook.QueenBee.Parser;
+using System.ComponentModel;
 
 namespace Nanook.QueenBee
 {
@@ -30,7 +31,7 @@ namespace Nanook.QueenBee
     
         public ScriptEditor() : base()
         {
-            InitializeComponent();
+            initializeComponent();
         }
 
         private void ScriptEditor_Load(object sender, EventArgs e)
@@ -353,6 +354,7 @@ namespace Nanook.QueenBee
             }
         }
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public int SelectedTabIndex
         {
             get { return tabs.SelectedIndex; }
@@ -360,7 +362,7 @@ namespace Nanook.QueenBee
         }
 
 
-        private void InitializeComponent()
+        private void initializeComponent()
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ScriptEditor));

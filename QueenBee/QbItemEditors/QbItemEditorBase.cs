@@ -23,7 +23,7 @@ namespace Nanook.QueenBee
             InitializeComponent();
         }
 
-        private void QbItemEditorBase_Load(object sender, EventArgs e)
+        private void qbItemEditorBase_Load(object sender, EventArgs e)
         {
 
         }
@@ -117,6 +117,7 @@ namespace Nanook.QueenBee
             }
         }
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public QbItemBase QbItem
         {
             get { return _qbItemBase; }
