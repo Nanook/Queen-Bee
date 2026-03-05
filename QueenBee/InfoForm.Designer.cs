@@ -53,7 +53,7 @@
             this.tabs.Location = new System.Drawing.Point(2, 5);
             this.tabs.Name = "tabs";
             this.tabs.SelectedIndex = 0;
-            this.tabs.Size = new System.Drawing.Size(671, 536);
+            this.tabs.Size = new System.Drawing.Size(787, 536);
             this.tabs.TabIndex = 0;
             // 
             // tabPage1
@@ -62,7 +62,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(663, 510);
+            this.tabPage1.Size = new System.Drawing.Size(779, 510);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "About";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -76,7 +76,7 @@
             this.txtAbout.Location = new System.Drawing.Point(0, 0);
             this.txtAbout.Name = "txtAbout";
             this.txtAbout.ReadOnly = true;
-            this.txtAbout.Size = new System.Drawing.Size(663, 510);
+            this.txtAbout.Size = new System.Drawing.Size(779, 510);
             this.txtAbout.TabIndex = 1;
             this.txtAbout.Text = "";
             // 
@@ -86,7 +86,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(459, 433);
+            this.tabPage2.Size = new System.Drawing.Size(779, 510);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Usage";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -100,7 +100,7 @@
             this.txtUsage.Location = new System.Drawing.Point(0, 0);
             this.txtUsage.Name = "txtUsage";
             this.txtUsage.ReadOnly = true;
-            this.txtUsage.Size = new System.Drawing.Size(459, 433);
+            this.txtUsage.Size = new System.Drawing.Size(779, 510);
             this.txtUsage.TabIndex = 0;
             this.txtUsage.Text = "";
             // 
@@ -109,7 +109,7 @@
             this.tabPage3.Controls.Add(this.txtVersionHistory);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(459, 433);
+            this.tabPage3.Size = new System.Drawing.Size(779, 510);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Version History";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -123,7 +123,7 @@
             this.txtVersionHistory.Location = new System.Drawing.Point(0, 0);
             this.txtVersionHistory.Name = "txtVersionHistory";
             this.txtVersionHistory.ReadOnly = true;
-            this.txtVersionHistory.Size = new System.Drawing.Size(459, 433);
+            this.txtVersionHistory.Size = new System.Drawing.Size(779, 510);
             this.txtVersionHistory.TabIndex = 0;
             this.txtVersionHistory.Text = "";
             // 
@@ -131,7 +131,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(674, 542);
+            this.ClientSize = new System.Drawing.Size(790, 542);
             this.Controls.Add(this.tabs);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;

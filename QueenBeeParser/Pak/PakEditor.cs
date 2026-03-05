@@ -186,7 +186,21 @@ namespace Nanook.QueenBee.Parser
 
                         try
                         {
-                            _pakHeaders.Add(phi.Filename.ToLower(), phi);
+                            string key = phi.Filename.ToLower();
+                            if (_pakHeaders.ContainsKey(key))
+                            {
+                                int dupIndex = 2;
+                                string newKey;
+                                do
+                                {
+                                    newKey = key + "_" + dupIndex;
+                                    dupIndex++;
+                                }
+                                while (_pakHeaders.ContainsKey(newKey));
+                                phi.Filename = phi.Filename + "_" + (dupIndex - 1);
+                                key = newKey;
+                            }
+                            _pakHeaders.Add(key, phi);
                         }
                         catch (Exception ex)
                         {
@@ -377,7 +391,7 @@ namespace Nanook.QueenBee.Parser
                 using (BinaryWriter bw = new BinaryWriter(stream))
                 {
                     //open input pak
-                    using (FileStream fsPak = File.Open(fname, FileMode.Open, FileAccess.ReadWrite))
+                    using (FileStream fsPak = File.Open(fname, FileMode.Open, FileAccess.Read))
                     {
                         if ((offset + phi.FileLength) - 1 > fsPak.Length)
                             throw new ApplicationException(string.Format("End of file '{0}' is located at 0x{1} which is beyond the PAK/PAB size 0x{2}", qbFilename, (offset + phi.FileLength).ToString("X").PadLeft(8, '0'), fsPak.Length.ToString("X").PadLeft(8, '0')));
@@ -935,22 +949,23 @@ namespace Nanook.QueenBee.Parser
         /// <param name="length"></param>
         private void copyData(Stream sr, Stream sw, long length)
         {
-            BinaryReader br = new BinaryReader(sr);
-            BinaryWriter bw = new BinaryWriter(sw);
-            long chunk = 1000000;
-            while (length > 0)
+            using (BinaryReader br = new BinaryReader(sr, Encoding.UTF8, leaveOpen: true))
+            using (BinaryWriter bw = new BinaryWriter(sw, Encoding.UTF8, leaveOpen: true))
             {
-                if (length > chunk)
+                long chunk = 1000000;
+                while (length > 0)
                 {
-                    bw.Write(br.ReadBytes((int)chunk));
-                    length -= chunk;
+                    if (length > chunk)
+                    {
+                        bw.Write(br.ReadBytes((int)chunk));
+                        length -= chunk;
+                    }
+                    else
+                    {
+                        bw.Write(br.ReadBytes((int)length));
+                        length = 0;
+                    }
                 }
-                else
-                {
-                    bw.Write(br.ReadBytes((int)length));
-                    length = 0;
-                }
-
             }
         }
 

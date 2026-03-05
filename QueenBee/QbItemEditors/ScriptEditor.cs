@@ -280,7 +280,7 @@ namespace Nanook.QueenBee
             {
                 string fname = string.Format("{0}_{1}.{2}", _qbItem.Root.Filename.Replace('\\', '#').Replace('/', '#').Replace('.', '#'), _qbItem.ItemQbKey.Crc.ToString("X").PadLeft(8, '0'), _fileExt);
 
-                if (AppState.LastScriptPath.Length == 0)
+                if (AppState.LastScriptPath.Length != 0)
                     fname = Path.Combine(AppState.LastScriptPath, fname);
 
                 fname = getBestFullFilename(fname);
@@ -313,7 +313,7 @@ namespace Nanook.QueenBee
             {
                 string fname = string.Format("{0}_{1}.{2}", _qbItem.Root.Filename.Replace('\\', '#').Replace('/', '#').Replace('.', '#'), _qbItem.ItemQbKey.Crc.ToString("X").PadLeft(8, '0'), _fileExt);
 
-                if (AppState.LastScriptPath.Length == 0)
+                if (AppState.LastScriptPath.Length != 0)
                     fname = Path.Combine(AppState.LastScriptPath, fname);
 
                 fname = getBestFullFilename(fname);

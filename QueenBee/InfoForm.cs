@@ -31,7 +31,7 @@ This application will help everyone discover lots of great hacks.  See the text 
 \lang1024\f1\'b7\tab\lang2057\f0 Edits a PAK's QB file in memory (No Import / Export required).\par
 \lang1024\f1\'b7\tab\lang2057\f0 Import / Export / Export All functionality for PAK files.\par
 \lang1024\f1\'b7\tab\lang2057\f0 Create New / Add / Rename / Remove files in PAK files.\par
-\lang1024\f1\'b7\tab\lang2057\f0 Supports all internal QB structures contained in Guitar Hero 3 / Aerosmith / World Tour / Metallica / Smash Hits / Greatest Hits / Tony Hawk's Proving Ground and Downhill Jam.\par
+\lang1024\f1\'b7\tab\lang2057\f0 Supports all internal QB structures contained in Guitar Hero 3 / Aerosmith / World Tour / Metallica / Smash Hits / Greatest Hits / Guitar Hero 5 / Warriors of Rock / Tony Hawk's Proving Ground and Downhill Jam.\par
 \lang1024\f1\'b7\tab\lang2057\f0 QB structure and array items can be created, removed, copied and pasted.\par
 \lang1024\f1\'b7\tab\lang2057\f0 All items are editable including increasing the size of text and script items.\par
 \lang1024\f1\'b7\tab\lang2057\f0 Array items can be saved to text files for easy editing.\par
@@ -234,6 +234,17 @@ Queen Bee creates various files in the same folder as the source files (PAK/PAB/
             #region Version History
             txtVersionHistory.Rtf = @"{\rtf1\ansi\ansicpg1252\deff0\deflang1033\deflangfe1033{\fonttbl{\f0\fswiss\fprq2\fcharset0 Tahoma;}}
 {\*\generator Msftedit 5.41.15.1515;}\viewkind4\uc1\pard\lang2057\b\f0\fs24 Version History\b0\fs16\par
+\par
+\b\fs20 v1.9\b0\fs16\par
+ - \b Added\b0 : Warriors of Rock (WoR) DLC support. PAK files with duplicate CRC-based filenames (e.g. localized .qs files) are now handled gracefully.\par
+ - \b Added\b0 : Guitar Hero 5 and Warriors of Rock to the supported games list.\par
+ - \b Fixed\b0 : Export/Import file dialogs in Script Editor and Array Editor now correctly remember the last used directory.\par
+ - \b Fixed\b0 : QbKey.GetHashCode() was inconsistent with Equals(), which could cause incorrect Dictionary/HashSet lookups.\par
+ - \b Fixed\b0 : PAK file extraction opened files with ReadWrite access instead of Read, preventing read-only files from loading.\par
+ - \b Fixed\b0 : Undisposed BinaryReader/BinaryWriter in PAK data copy operations.\par
+ - \b Fixed\b0 : Undisposed BinaryEndianWriter when writing QB files.\par
+ - \b Changed\b0 : Widened the Information dialog to prevent text wrapping in Version History and About tabs.\par
+ - \b Changed\b0 : Upgraded to .NET 10 single-target build.\par
 \par
 \b\fs20 v1.8\b0\fs16\par
  - \b Fixed\b0 : Certain item types were being saved with the wrong ID.\par

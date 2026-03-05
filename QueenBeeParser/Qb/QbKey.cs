@@ -118,7 +118,7 @@ namespace Nanook.QueenBee.Parser
 
         public override int GetHashCode()
         {
-            return base.GetHashCode() & (int)this._crc; //Hmm
+            return this._crc.GetHashCode();
         }
 
         public bool HasText

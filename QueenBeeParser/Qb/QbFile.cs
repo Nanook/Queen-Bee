@@ -645,9 +645,8 @@ namespace Nanook.QueenBee.Parser
 
         public void Write(Stream s)
         {
-            BinaryEndianWriter bw = new BinaryEndianWriter(s);
-            //using (BinaryEndianWriter bw = new BinaryEndianWriter(s))
-            //{
+            using (BinaryEndianWriter bw = new BinaryEndianWriter(s, leaveOpen: true))
+            {
                 this.startLengthCheck(bw);
 
                 bw.Write(_magic, this.PakFormat.EndianType);
@@ -656,10 +655,9 @@ namespace Nanook.QueenBee.Parser
                 foreach (QbItemBase qib in _items)
                     qib.Write(bw);
 
-
                 ApplicationException ex = this.testLengthCheck(this, bw);
                 if (ex != null) throw ex;
-            //}
+            }
 
         }
 

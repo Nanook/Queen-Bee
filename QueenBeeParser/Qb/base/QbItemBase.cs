@@ -614,7 +614,7 @@ namespace Nanook.QueenBee.Parser
                 }
                 else if (_childMode == 2)
                 {
-                    if (this.ItemCount < 0)
+                    if (this.ItemCount < 0) // uint is always >= 0; validation is a no-op
                         return IsValidReturnType.ItemMustHave0OrMoreItems;
                 }
                 else if (_childMode == 3)

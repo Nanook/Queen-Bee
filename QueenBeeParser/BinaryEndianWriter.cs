@@ -12,6 +12,11 @@ namespace Nanook.QueenBee.Parser
             : base(input)
         {
         }
+
+        public BinaryEndianWriter(Stream input, bool leaveOpen)
+            : base(input, System.Text.Encoding.UTF8, leaveOpen)
+        {
+        }
         
         public void Write(UInt32 value, EndianType endianType)
         {
